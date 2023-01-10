@@ -34,17 +34,29 @@ console.log([1, 2, 3, 4, 5].reduce(reducer, 50));
 
 //Write a function zooInventory that takes a zoo's inventory of animals (represented using nested arrays) and returns an array of strings that describe each animal's name, species, and age.
 
-function zooInventory(arr) {
+/*function zooInventory(arr) {
   for (var i = 0; i < arr.length; i++) {
     console.log(arr[i][0] + " the " + arr[i][1][0] + " is " + arr[i][1][1]);
   }
 }
 
-var myZoo = [
-    ["King Kong", ["gorilla", 42]],
-    ["Nemo", ["fish", 5]],
-    ["Punxsutawney Phil", ["groundhog", 11]]
-  ];
+  zooInventory(myZoo);*/
 
-  zooInventory(myZoo);
+  var myZoo = [
+	["King Kong", ["gorilla", 42]],
+	["Nemo", ["fish", 5]],
+	["Punxsutawney Phil", ["groundhog", 11]],
+];
+
+function zooInventory(arr) {
+	let array = arr.map((el) => {
+		const animal = el.flat(2);
+    animal.splice(1, 0, "the")
+		animal.splice(3, 0, "is");
+		return animal.join(" ");
+	});
+	return(array);
+}
+
+console.log(zooInventory(myZoo))
 
